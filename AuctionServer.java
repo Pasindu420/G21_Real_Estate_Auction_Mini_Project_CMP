@@ -243,7 +243,7 @@ class clientThread extends Thread {
 
 	try {
 		//if username is valid (in authorized list)
-		if(isSeller && loginName[1].equals("seller") || !isSeller && "alice,bob,dave,pam,susan,tom,mike".contains(loginName[1])) {
+		if(isSeller && loginName[1].equals("seller") || !isSeller && "Pasindu,Maleesha,Dilushi,Manujaya,susan,tom,mike".contains(loginName[1])) {
 
 			synchronized (this) {
 
