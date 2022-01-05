@@ -1,5 +1,3 @@
-// Andrew Shaffer (G00688109)
-
 public class AuctionItem {
 	private  int itemNumber;
 	private  String itemName;
