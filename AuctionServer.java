@@ -1,5 +1,3 @@
-// Andrew Shaffer (G00688109)
-
 import java.io.*;
 import java.net.*;
 import java.util.*;

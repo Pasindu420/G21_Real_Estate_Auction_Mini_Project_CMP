@@ -16,7 +16,7 @@ public class Buyer implements Runnable {
     String host = "localhost";
 
 
-    //Try to open socket
+    //open socket
     try {
       clientSocket = new Socket(host, buyerPort);
       inputLine = new BufferedReader(new InputStreamReader(System.in));
