@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 35e9a653fcd3af94e2c57867e0506ec85bd45363
 import java.io.*;
 import java.net.*;
 import java.util.*;
