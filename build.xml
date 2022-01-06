@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project name="the project" default="compile" basedir=".">
+
+	<property name="src.dir" location="src" />
+	<property name="bin.dir" location="bin" />
+	<property name="lib.dir" location="lib" />
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+	</path>
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<mkdir dir="${bin.dir}" />
+	</target>
+
+
+	<target name="clean" description="remove intermediate files">
+		<delete dir="${bin.dir}" />
+	</target>
+
+	<target name="compile" depends="init" description="compile the Java source code to class files">
+		<javac srcdir="${src.dir}" destdir="${bin.dir}" classpathref="classpath" />
+	</target>
+
+</project>
