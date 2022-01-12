@@ -1,4 +1,4 @@
-// Andrew Shaffer (G00688109)
+// Mini_Project (Group_21)
 
 public class AuctionItem {
 	private  int itemNumber;
