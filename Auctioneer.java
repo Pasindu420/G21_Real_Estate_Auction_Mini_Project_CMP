@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 
-public class AuctionServer {
+public class Auctioneer {
 
   private static ServerSocket serverBuyerSocket = null;
   private static ServerSocket serverSellerSocket = null;
