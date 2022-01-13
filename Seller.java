@@ -14,7 +14,7 @@ public class Seller implements Runnable {
 
   public static void main(String[] args) {
 
-    int sellerPort = 2221;
+    int sellerPort = 2021;
     String host = "localhost";
 
 

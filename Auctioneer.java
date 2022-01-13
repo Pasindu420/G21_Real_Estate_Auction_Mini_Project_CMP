@@ -18,7 +18,7 @@ public class Auctioneer {
 
   public static void main(String args[]) {
 
-    int sellerPort = 2221;
+    int sellerPort = 2021;
     int buyerPort = 2222;
 
 	LinkedList<AuctionItem> auctionList = new LinkedList<AuctionItem>();
