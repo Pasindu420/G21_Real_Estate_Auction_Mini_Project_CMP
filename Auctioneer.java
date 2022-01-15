@@ -28,7 +28,7 @@ public class Auctioneer {
 	  timer t1=new timer(System.currentTimeMillis() + givenTime[1]);
 	  t1.start();
     int sellerPort = 2021;
-    int buyerPort = 2222;
+    int buyerPort = 2022;
 
 	LinkedList<AuctionItem> auctionList = new LinkedList<AuctionItem>();
 	LinkedList<Message> messageQueue = new LinkedList<Message>();

@@ -14,7 +14,7 @@ public class Buyer implements Runnable {
 
   public static void main(String[] args) {
 
-    int buyerPort = 2222;
+    int buyerPort = 2022;
     String host = "localhost";
     System.out.println(timer.a);
 
