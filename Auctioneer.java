@@ -17,7 +17,16 @@ public class Auctioneer {
 
 
   public static void main(String args[]) {
-
+	  final int[] givenTime = new int[2];//make given time array to store user inputs.
+	  try {
+		  givenTime[1] = Integer.parseInt(args[0]) * 60_000; //get the user input argument as minutes and store in given time array.
+//		  Item.setBiddingTime(Integer.parseInt(args[0]) * 60_000); // pass the value to item map bidding time variable.
+	  } catch (NumberFormatException e) {
+		  e.printStackTrace();// if there is a number format issue print the error.
+		  System.err.println("Problem in input Arguments");// print some error to sever.
+	  }
+	  timer t1=new timer(System.currentTimeMillis() + givenTime[1]);
+	  t1.start();
     int sellerPort = 2021;
     int buyerPort = 2222;
 
@@ -178,7 +187,8 @@ class clientThread extends Thread {
         }
         else if(line.startsWith("login")) {
 			this.os.println("> You are already logged in as " + name);
-        }
+			this.os.println(timer.a);
+		}
         else if(line.startsWith("list")) {
 			list(auctionList);
         }
@@ -265,10 +275,12 @@ class clientThread extends Thread {
 			if(name.equals("seller")) {
 				this.os.println("> Logged in to Seller Client of Auction Service as : " + this.name );
 				System.out.println(this.name + ": logged in as seller client" );
+				this.os.println(timer.a);
 			}
 			else {
 				this.os.println("> Logged in to Buyer Client of Auction Service as " + this.name);
 				System.out.println(this.name + ": logged in as buyer client" );
+				this.os.println(timer.a);
 	 		}
 			return true;
 		}

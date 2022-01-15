@@ -17,7 +17,6 @@ public class Seller implements Runnable {
     int sellerPort = 2021;
     String host = "localhost";
 
-
     //Try to open socket
     try {
       clientSocket = new Socket(host, sellerPort);

@@ -16,7 +16,7 @@ public class Buyer implements Runnable {
 
     int buyerPort = 2222;
     String host = "localhost";
-
+    System.out.println(timer.a);
 
     //Try to open socket
     try {
