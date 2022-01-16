@@ -1,0 +1,49 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "name": "Launch Extension",
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm",
+            "request": "launch",
+            "type": "pwa-extensionHost"
+        },
+
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch AuctionServer",
+            "request": "launch",
+            "mainClass": "AuctionServer",
+            "projectName": "Mini_Project_CMP_e90fd3f9"
+        },
+        {
+            "type": "java",
+            "name": "Launch Buyer",
+            "request": "launch",
+            "mainClass": "Buyer",
+            "projectName": "Mini_Project_CMP_e90fd3f9"
+        },
+        {
+            "type": "java",
+            "name": "Launch Seller",
+            "request": "launch",
+            "mainClass": "Seller",
+            "projectName": "Mini_Project_CMP_e90fd3f9"
+        }
+    ]
+}
