@@ -35,15 +35,15 @@ public class Auctioneer {
 
     //Open a server socket for ports & set timeout
     try {
-      System.out.println("TCP Server Initialized...");
+      System.out.println("Auction Server Started");
 
       serverBuyerSocket = new ServerSocket(buyerPort);
       serverBuyerSocket.setSoTimeout(500);
-      System.out.println("Waiting for client buyer connections...");
+      System.out.println("Waiting for buyers");
 
       serverSellerSocket = new ServerSocket(sellerPort);
       serverSellerSocket.setSoTimeout(500);
-      System.out.println("Waiting for seller client connections...");
+      System.out.println("Waiting for sellers");
 
     } catch (IOException e) {
     	e.printStackTrace();
@@ -56,7 +56,7 @@ public class Auctioneer {
 		try {
 
 			buyerSocket = serverBuyerSocket.accept();
-			System.out.println("Buyer client has connected...");
+			System.out.println("New Buyer connected");
 			for (int i = 0; i < maxThreadCount; i++) {
 			  if (clientThreads[i] == null) {
 				(clientThreads[i] = new clientThread(buyerSocket, clientThreads,false,auctionList,messageQueue)).start();
@@ -77,8 +77,8 @@ public class Auctioneer {
 		  //refuse connection if seller is already connected
 
 			PrintStream os = new PrintStream(sellerSocket.getOutputStream());
-			os.println("** Seller Client Connection Limit Reached. Please try again later");
-			System.out.println("Seller client connection refused - Limit reached.");
+			os.println("Seller Limit Reached Wait until Auction ended");
+			System.out.println("Seller connection refused - Limit reached.");
 			os.close();
 			sellerSocket.close();
 		  }
@@ -88,7 +88,7 @@ public class Auctioneer {
 			  for (int i = 0; i < maxThreadCount; i++) {
 				if (clientThreads[i] == null) {
 				  (clientThreads[i] = new clientThread(sellerSocket, clientThreads,true,auctionList,messageQueue)).start();
-				  System.out.println("Seller client has connected...");
+				  System.out.println("Seller Connection Successful");
 				  break;
 				}
 			  }
@@ -150,8 +150,8 @@ class clientThread extends Thread {
       os = new PrintStream(clientSocket.getOutputStream());
 
       //prompt user to login
-      this.os.println("*** Connected to server ***");
-      this.os.println("*** Please login to continue ***");
+      this.os.println("Connected To The Auction");
+      this.os.println("login to continue");
 
 	  String preLoginLine = "";
       while (!loggedIn) {
@@ -186,7 +186,7 @@ class clientThread extends Thread {
           break;
         }
         else if(line.startsWith("login")) {
-			this.os.println("> You are already logged in as " + name);
+			this.os.println(">>>logged in as " + name);
 			this.os.println(timer.a);
 		}
         else if(line.startsWith("list")) {
@@ -196,7 +196,7 @@ class clientThread extends Thread {
 
 			if(isSeller) {
 				System.out.println("Seller attempted to call bid function: " + line);
-				this.os.println("> Seller client cannot call the bid function");
+				this.os.println("> Seller cannot call the bid function");
 			}
 			else
 				bid(line);
@@ -205,7 +205,7 @@ class clientThread extends Thread {
 
 			if(!isSeller) {
 				System.out.println("Buyer (" + name + ") attempted to call ADD function: " + line);
-				this.os.println("> Buyer client cannot add items to the list");
+				this.os.println("> Buyer cannot add items to the list");
 			}
 			else
 				add(line);
@@ -273,13 +273,13 @@ class clientThread extends Thread {
 			this.name = loginName[1];
 
 			if(name.equals("seller")) {
-				this.os.println("> Logged in to Seller Client of Auction Service as : " + this.name );
-				System.out.println(this.name + ": logged in as seller client" );
+				this.os.println("> Logged in as Seller of Auction Service as : " + this.name );
+				System.out.println(this.name + ": logged in as seller" );
 				this.os.println(timer.a);
 			}
 			else {
-				this.os.println("> Logged in to Buyer Client of Auction Service as " + this.name);
-				System.out.println(this.name + ": logged in as buyer client" );
+				this.os.println("> Logged in to Buyer Account as " + this.name);
+				System.out.println(this.name + ": logged in as buyer" );
 				this.os.println(timer.a);
 	 		}
 			return true;
@@ -380,7 +380,7 @@ class clientThread extends Thread {
 
 	try{
 		String[] element = input.split(" ",3);
-		System.out.println(name + ": sent bid command: " + input);
+		System.out.println(name + ": sent bid : " + input);
 
 		synchronized (this) {
 			if(auctionList.size() == 0)
@@ -442,7 +442,7 @@ class clientThread extends Thread {
 
 	try{
 		String[] element = input.split(" ",2);
-		System.out.println(name + ": sent sell command: " + input);
+		System.out.println(name + ": proceed sell : " + input);
 
 		try {
 
